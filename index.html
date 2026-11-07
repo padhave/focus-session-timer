@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Focus Session Timer</title><style>
+*{box-sizing:border-box}body{font:16px/1.5 system-ui,sans-serif;max-width:760px;margin:3rem auto;padding:0 1rem;color:#203040;background:#f5f8fc}
+main{background:white;padding:2rem;border-radius:14px;box-shadow:0 8px 30px #17324d18}input,button{font:inherit;padding:.45rem .6rem;margin:.3rem}button{cursor:pointer}
+.card,.timer{font-size:1.5rem;padding:1rem;background:#eef5ff;border-radius:8px}.palette{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
+.swatch{width:110px;height:110px;border-radius:8px;display:grid;place-items:end center;padding:.4rem;color:white;text-shadow:0 1px 3px #000}
+</style></head><body><main><h1>Focus Session Timer</h1><p>A simple 25-minute countdown with start, pause, and reset.</p><p id="time" class="timer">25:00</p><button id="start">Start</button><button id="pause">Pause</button><button id="reset">Reset</button></main><script>let seconds=1500,timer=null;function draw(){time.textContent=`${String(seconds/60|0).padStart(2,"0")}:${String(seconds%60).padStart(2,"0")}`}start.onclick=()=>{if(!timer)timer=setInterval(()=>{if(seconds){seconds--;draw()}else{clearInterval(timer);timer=null}},1000)};pause.onclick=()=>{clearInterval(timer);timer=null};reset.onclick=()=>{clearInterval(timer);timer=null;seconds=1500;draw()};draw();</script></body></html>
